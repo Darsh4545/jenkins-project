@@ -9,7 +9,7 @@ pipeline {
         GKE_CLUSTER = 'your-gke-cluster'
         GKE_ZONE = 'us-central1-a'
         GOOGLE_CREDENTIALS = credentials('service-gcp')
-        GIT_CREDENTIALS = credentials('jenkins-git')  // This is the GitHub credentials ID
+        GIT_CREDENTIALS = credentials('git-jenkins')  // This is the GitHub credentials ID
        
     }
 
@@ -17,7 +17,7 @@ pipeline {
         stage('Checkout') {
             steps {
                 // Checkout your source code, using the specified branch
-                git credentialsId: 'jenkins-git', branch: 'main', url: 'https://github.com/Darsh4545/Jenkins-git.git'
+                git credentialsId: 'git-jenkins', branch: 'main', url: 'https://github.com/Darsh4545/jenkins-project.git'
             }
         }
         
