@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-app-deployment
+spec:
+  replicas: 2  # Number of pod replicas
+  selector:
+    matchLabels:
+      app: my-app
+  template:
+    metadata:
+      labels:
+        app: my-app
+    spec:
+      containers:
+      - name: my-app
+        image: gcr.io/poised-graph-435714-p2/my-app:latest  # Update with your image path
+        ports:
+        - containerPort: 5000  # Update with your application's port
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: my-app-service
+spec:
+  type: LoadBalancer  # This will create a cloud load balancer
+  ports:
+    - port: 80          # Port exposed to the outside
+      targetPort: 5000  # Port on which your app is running
+  selector:
+    app: my-app  # Should match the labels in your deployment
