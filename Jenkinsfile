@@ -49,8 +49,6 @@ pipeline {
                     // Get credentials for GKE cluster
                     sh "gcloud container clusters get-credentials ${GKE_CLUSTER} --zone ${GKE_ZONE} --project ${PROJECT_ID}"
                     
-                    sh "kubectl apply -f deployment.yaml --namespace ${GKE_NAMESPACE}"
-                    
                     // Deploy the application using kubectl
                     sh """
                     kubectl set image deployment/${IMAGE_NAME} ${IMAGE_NAME}=gcr.io/${PROJECT_ID}/${IMAGE_NAME}:${IMAGE_TAG}
