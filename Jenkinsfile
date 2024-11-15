@@ -25,7 +25,6 @@ pipeline {
                 script {
                     // Build the Docker image
                     sh "docker build -t gcr.io/poised-graph-435714-p2/my-app:latest ."
-"
                 }
             }
         }
