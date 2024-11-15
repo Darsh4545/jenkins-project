@@ -1,11 +1,8 @@
 pipeline {
     agent any
 
-    tools {
-        git 'Default'  // Ensure this corresponds to your Git installation name in Global Tool Configuration
-    }
-
     environment {
+        
         PROJECT_ID = 'poised-graph-435714-p2'
         IMAGE_NAME = 'gcr.io/poised-graph-435714-p2/my-app:latest'
         IMAGE_TAG = "${env.BUILD_ID}"
@@ -13,16 +10,17 @@ pipeline {
         GKE_ZONE = 'us-central1-a'
         GOOGLE_CREDENTIALS = credentials('service-gcp')
         GIT_CREDENTIALS = credentials('git-jenkins')  // This is the GitHub credentials ID
+       
     }
 
     stages {
         stage('Checkout') {
             steps {
                 // Checkout your source code, using the specified branch
-                git branch: 'main', url: 'https://github.com/Darsh4545/jenkins-project.git', credentialsId: "${env.GIT_CREDENTIALS}"
+                git branch: 'main', url: 'https://github.com/Darsh4545/jenkins-project.git'
             }
         }
-
+        
         stage('Build Docker Image') {
             steps {
                 script {
@@ -54,7 +52,7 @@ pipeline {
                     // Deploy the application using kubectl
                     sh """
                     kubectl set image deployment/${GKE_CLUSTER} ${IMAGE_NAME}=gcr.io/${PROJECT_ID}/${IMAGE_NAME}:${IMAGE_TAG}
-                    kubectl rollout status deployment/${IMAGE_NAME}
+                    kubectl rollout status deployment/${IMAGE_NAME} 
                     """
                 }
             }
@@ -70,4 +68,3 @@ pipeline {
         }
     }
 }
-
