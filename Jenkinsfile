@@ -17,7 +17,7 @@ pipeline {
         stage('Checkout') {
             steps {
                 // Checkout your source code, using the specified branch
-                git credentialsId: 'git-jenkins', branch: 'main', url: 'https://github.com/Darsh4545/jenkins-project.git'
+                git branch: 'main', url: 'https://github.com/Darsh4545/jenkins-project.git'
             }
         }
         
