@@ -5,7 +5,6 @@ pipeline {
         
         PROJECT_ID = 'poised-graph-435714-p2'
         IMAGE_NAME = 'gcr.io/poised-graph-435714-p2/my-app:latest'
-        IMAGE_TAG = "${env.BUILD_ID}"
         GKE_CLUSTER = 'my-gke-cluster'
         GKE_ZONE = 'us-central1-a'
         GOOGLE_CREDENTIALS = credentials('service-gcp')
