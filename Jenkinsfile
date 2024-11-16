@@ -6,7 +6,7 @@ pipeline {
         PROJECT_ID = 'poised-graph-435714-p2'
         IMAGE_NAME = 'gcr.io/poised-graph-435714-p2/my-app:latest'
         GKE_CLUSTER = 'my-gke-cluster'
-        GKE_ZONE = 'us-central1-a'
+        GKE_ZONE = 'us-central1'
         GOOGLE_CREDENTIALS = credentials('service-gcp')
         GIT_CREDENTIALS = credentials('jenkins-git')  // This is the GitHub credentials ID
        
