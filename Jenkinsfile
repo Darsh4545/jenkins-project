@@ -50,7 +50,7 @@ pipeline {
                     
                     // Deploy the application using kubectl
                     sh """
-                    kubectl apply -f kubernetes/deployments.yaml
+                    kubectl apply -f deployments.yaml
                     """
                 }
             }
