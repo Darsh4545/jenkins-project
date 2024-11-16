@@ -8,7 +8,7 @@ pipeline {
         GKE_CLUSTER = 'my-gke-cluster'
         GKE_ZONE = 'us-central1-a'
         GOOGLE_CREDENTIALS = credentials('service-gcp')
-        GIT_CREDENTIALS = credentials('git-jenkins')  // This is the GitHub credentials ID
+        GIT_CREDENTIALS = credentials('jenkins-git')  // This is the GitHub credentials ID
        
     }
 
