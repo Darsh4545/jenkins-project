@@ -50,8 +50,7 @@ pipeline {
                     
                     // Deploy the application using kubectl
                     sh """
-                    kubectl set image deployment/${GKE_CLUSTER} ${IMAGE_NAME}=gcr.io/${PROJECT_ID}/${IMAGE_NAME}:${IMAGE_TAG}
-                    kubectl rollout status deployment/${IMAGE_NAME} 
+                    kubectl apply -f kubernetes/deployments.yaml
                     """
                 }
             }
