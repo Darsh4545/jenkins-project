@@ -1,3 +1,4 @@
+from werkzeug.urls import url_quote
 from flask import Flask
 app = Flask(__name__)
 
